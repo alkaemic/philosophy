@@ -1,6 +1,8 @@
 .ignore/
 .ssl/
 .venv/
+.vscode/
+!.vscode/settings.json
 
 .DS_Store
 .env

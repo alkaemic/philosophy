@@ -1,0 +1,13 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.DS_Store": true,
+        "**/.pytest_cache": true,
+        "**/.venv": true,
+        "**/__pycache__": true
+    },
+    "[python]": {
+        "editor.tabSize": 4,
+        "editor.detectIndentation": false,
+    }
+}

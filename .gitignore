@@ -1,0 +1,24 @@
+.ignore/
+.ssl/
+.venv/
+
+.DS_Store
+.env
+*.scratch
+scratch
+
+
+### ===================
+###   JAVASCRIPT
+### ===================
+node_modules/
+build/
+
+
+### ===================
+###   PYTHON
+### ===================
+.pytest_cache/
+__pycache__/
+coverage/
+.coverage

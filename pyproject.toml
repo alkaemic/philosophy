@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "philosophy"
+version = "1.0.0"
+description = ""
+authors = ["Alkaemic <no-reply@alkaemic.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+sqlalchemy = "^1.4"
+
+[tool.poetry.group.dev.dependencies]
+mock = "^5.0.1"
+pytest = "^7.2.1"
+pytest-cov = "^4.0.0"
+pytest-mock = "^3.10.0"
+black = "^23.1.0"
+
+[build-system]
+requires = ["poetry>=1.0"]
+build-backend = "poetry.masonry.api"

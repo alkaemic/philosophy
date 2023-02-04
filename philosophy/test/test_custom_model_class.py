@@ -3,7 +3,8 @@ import pytest
 from .. import philosophy
 from ..model import BindMetaMixin
 from sqlalchemy.exc import InvalidRequestError
-from sqlalchemy.ext.declarative import DeclarativeMeta, declarative_base
+from sqlalchemy.ext.declarative import DeclarativeMeta
+from sqlalchemy.orm import declarative_base
 
 
 def test_custom_model_class():

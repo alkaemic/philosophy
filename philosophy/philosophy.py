@@ -21,6 +21,7 @@ from typing import Any
 from typing import Optional
 from typing import Union
 from .model import DefaultMeta, Model
+from .mixin import mixin_sqlalchemy, mixin_sqlalchemy_orm
 
 
 # the best timer function for the platform

@@ -1,12 +1,12 @@
 [tool.poetry]
 name = "philosophy"
-version = "1.4.0"
+version = "2.0.0"
 description = ""
 authors = ["Alkaemic <no-reply@alkaemic.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-sqlalchemy = "^1.4"
+sqlalchemy = "^2.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.1.0"

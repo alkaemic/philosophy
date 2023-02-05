@@ -73,7 +73,6 @@ def _include_sqlalchemy(obj, cls):
     # Note: obj.Table does not attempt to be a SQLAlchemy Table class.
     obj.Table = _make_table(obj)
     obj.relationship = _wrap_with_default_query_class(obj.relationship, cls)
-    obj.relation = _wrap_with_default_query_class(obj.relation, cls)
     obj.dynamic_loader = _wrap_with_default_query_class(obj.dynamic_loader, cls)
     obj.event = event
 
@@ -504,4 +503,4 @@ class PhilosophySession(SessionBase):
             if bind_key is not None:
                 state = get_state(self.adapter)
                 return state.db.get_engine(self.adapter, bind=bind_key)
-        return SessionBase.get_bind(self, mapper, clause)
+        return SessionBase.get_bind(self, mapper=mapper, clause=clause)

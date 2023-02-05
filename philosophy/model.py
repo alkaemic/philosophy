@@ -5,7 +5,6 @@ from sqlalchemy.orm.decl_api import DeclarativeMeta, declared_attr
 from sqlalchemy.schema import _get_table_key
 from typing import Any
 from .utils import has_primary_key
-from typing import Any
 
 camelcase_re = re.compile(r"([A-Z]+)(?=[a-z0-9])")
 
@@ -61,13 +60,20 @@ class AutoBigIntegerIdentifierMetaMixin(object):
     A meta class for auto-generating `BigInteger` primary key columns on models.
     """
 
-    def __init__(cls, name, bases, ns):
+    def __init__(
+        cls, classname: str, bases: tuple[type[Any], ...], dict_: dict[str, Any]
+    ) -> None:
         """ """
         #: Check to see if the class has at least one primary key defined. If
         #: not, automatically generate one.
         has_primary = has_primary_key(cls)
 
         if not has_primary:
+            cls.__dict__.update(
+                {"id": sa.Column("id", sa.BigInteger, nullable=False, primary_key=True)}
+            )
+            cls.__dict__["id"]._creation_order = 1
+
             dict_.update(
                 {"id": sa.Column("id", sa.BigInteger, nullable=False, primary_key=True)}
             )

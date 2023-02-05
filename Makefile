@@ -52,6 +52,11 @@ help:
 	@echo ""
 
 
+.PHONY: black
+black:
+	@python -W always::DeprecationWarning -m black philosophy
+
+
 ### <summary>
 ### </summary>
 .PHONY: .clean-pyx
@@ -93,6 +98,11 @@ init.macos: init.macos.deps
 init.macos.deps:
 	@brew install python@3.10 openssl rust
 	@curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python3 -
+
+
+.PHONY: lint
+lint:
+	@python -W always::DeprecationWarning -m flake8
 
 
 .PHONY: logs

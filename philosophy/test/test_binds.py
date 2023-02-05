@@ -1,7 +1,3 @@
-from .. import philosophy
-from sqlalchemy.ext.declarative import declared_attr
-
-
 def test_engine_lookup(db, database_manager):
     database_manager.config["SQLALCHEMY_BINDS"] = {
         "foo": "sqlite://",

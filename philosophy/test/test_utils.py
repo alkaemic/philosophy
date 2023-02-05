@@ -1,6 +1,5 @@
-import mock
 import pytest
-from ..philosophy import utils
+from .. import utils
 
 
 @pytest.fixture

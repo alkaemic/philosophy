@@ -5,14 +5,10 @@
     This module is the core implementation of the Philosophy library.
 """
 import functools
-import os
 import sqlalchemy
 import sys
 import time
-import warnings
-from math import ceil
-from operator import itemgetter
-from sqlalchemy import event, inspect, orm
+from sqlalchemy import event, orm
 from sqlalchemy.engine import Engine, Connection
 from sqlalchemy.engine.url import make_url
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
@@ -25,7 +21,7 @@ from typing import Any
 from typing import Optional
 from typing import Union
 from .model import DefaultMeta, Model
-from . import utils
+from .mixin import mixin_sqlalchemy, mixin_sqlalchemy_orm
 
 
 # the best timer function for the platform
@@ -287,9 +283,7 @@ class Philosophy(object):
                 options.setdefault("pool_recycle", 7200)
         elif sa_url.drivername == "sqlite":
             pool_size = options.get("pool_size")
-            detected_in_memory = False
             if sa_url.database in (None, "", ":memory:"):
-                detected_in_memory = True
                 from sqlalchemy.pool import StaticPool
 
                 options["poolclass"] = StaticPool

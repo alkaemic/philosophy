@@ -21,7 +21,6 @@ from typing import Any
 from typing import Optional
 from typing import Union
 from .model import DefaultMeta, Model
-from .mixin import mixin_sqlalchemy, mixin_sqlalchemy_orm
 
 
 # the best timer function for the platform
@@ -67,11 +66,9 @@ def _wrap_with_default_query_class(fn, cls):
 
 
 def _include_sqlalchemy(obj, cls):
-    #: TODO this seems "utility-ish", move it out of here to either utils or something more appropriate to SQLAlchemy??
-    for module in sqlalchemy, sqlalchemy.orm:
-        for key in module.__all__:
-            if not hasattr(obj, key):
-                setattr(obj, key, getattr(module, key))
+    obj = mixin_sqlalchemy(obj, cls)
+    obj = mixin_sqlalchemy_orm(obj, cls)
+
     # Note: obj.Table does not attempt to be a SQLAlchemy Table class.
     obj.Table = _make_table(obj)
     obj.relationship = _wrap_with_default_query_class(obj.relationship, cls)
